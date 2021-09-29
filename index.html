@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textpad</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        body{
+            background: #d189ff;
+            display:grid;
+
+            place-items:center;
+    
+        }
+        .container{
+            display:grid;
+            place-items:center;
+            background: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+     
+        }
+        input{
+            width: 282px;
+            background: rgb(185, 185, 185);
+    border: none;
+    border-radius: 15px;
+    height: 29px;
+    padding-left: 16px;
+    outline: none;
+            border: none;
+        }
+        textarea{
+            margin-top: 10px;
+
+            outline: none;
+            border: none;
+            background: rgb(172, 165, 165);
+        }
+        button{
+            outline: none;
+    border: none;
+    margin-top: 10px;
+    height: 35px;
+    width: 86px;
+}
+button:hover{
+    background: grey;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Textpad</h1>
+        <input type="text" id="name" placeholder="enter file name">
+        <textarea name="" id="" cols="37" rows="30" placeholder="enter the text"></textarea>
+        <button onclick="down()">download</button>
+    </div>
+    <script>
+        function down(){
+            const textarea = document.querySelector("textarea").value;
+            const filename = document.querySelector("#name").value;
+            const a=document.createElement("a");
+          document.body.append(a);
+          a.setAttribute('href',"data:text/plain;charset=utf-8," + encodeURIComponent(textarea))
+            a.download=`${filename}`;
+          a.click();
+          a.remove();
+          location.reload();
+            
+       
+        }
+    </script>
+    
+</body>
+</html>
