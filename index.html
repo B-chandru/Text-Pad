@@ -4,80 +4,124 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Textpad</title>
+    <meta name="keywords" content="Textpad, notepad, textpad, note ">
+    <meta name="description" content="a website to create your files and save it in your format">
+    <title>Textpad📝</title>
     <style>
         *{
             margin:0;
             padding: 0;
+            box-sizing: border-box;
             font-family: sans-serif;
         }
         body{
-            background: #d189ff;
-            display:grid;
-
-            place-items:center;
-    
+            background:#44798A;
+            padding: 10px;
+        }
+        header img{
+            width: 35px;
         }
         .container{
-            display:grid;
-            place-items:center;
-            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
             padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
-     
+            width: 341px;
+            height: 500px;
+            background: #ffff;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+        }
+        .container > div{
+            display: grid;
+            place-content: center;
+        }
+        .container h1{
+            text-align: center;
+            text-transform: capitalize;
         }
         input{
-            width: 282px;
-            background: rgb(185, 185, 185);
-    border: none;
-    border-radius: 15px;
-    height: 29px;
-    padding-left: 16px;
-    outline: none;
-            border: none;
+            all: unset;
+            margin-top: 22px;
+            height: 47px;
+            width: 302px;
+            background: #d7d7d7;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 8px;
+            padding-left: 16px;
         }
+        input:focus{
+            background: #d7d7d785;
+        }
+        
         textarea{
-            margin-top: 10px;
-
-            outline: none;
-            border: none;
-            background: rgb(172, 165, 165);
+            all: unset;
+            width: 297px;
+            padding: 10px;
+            height: 260px;
+            background: #d7d7d7;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 8px;
+            margin-top: 22px;
+        }
+        textarea:focus{
+            background: #d7d7d785;
         }
         button{
+            border: none;
             outline: none;
-    border: none;
-    margin-top: 10px;
-    height: 35px;
-    width: 86px;
+            margin-top: 22px;
+            background:#40af23;
+            color: white;
+            border-radius: 8px;
+            height: 41px;
+            font-size: 16px;
 }
 button:hover{
-    background: grey;
+    font-weight: 500;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
     </style>
 </head>
 <body>
+    <header>
+        <img src="./logo.png" alt="">
+    </header>
     <div class="container">
-        <h1>Textpad</h1>
-        <input type="text" id="name" placeholder="enter file name">
-        <textarea name="" id="" cols="37" rows="30" placeholder="enter the text"></textarea>
-        <button onclick="down()">download</button>
+        <div>
+            <h1>Text-pad 📝</h1>
+            <input type="text" id="name" placeholder="Enter file name">
+            <textarea name="" id="" cols="37" rows="30" placeholder="Enter the text"></textarea>
+            <button onclick="down()">Download</button>
+        </div>
     </div>
     <script>
         function down(){
-            const textarea = document.querySelector("textarea").value;
-            const filename = document.querySelector("#name").value;
-            const a=document.createElement("a");
-          document.body.append(a);
-          a.setAttribute('href',"data:text/plain;charset=utf-8," + encodeURIComponent(textarea))
-            a.download=`${filename}`;
-          a.click();
-          a.remove();
-          location.reload();
-            
-       
+            const textarea = document.querySelector("textarea");
+            const filename = document.querySelector("#name");
+            if ( !textarea.value && !filename.value){
+                alert("Please enter any content into the fields !");
+            }else{
+                if (textarea.value =="" ) {
+                alert("Please Enter the content !");
+            }
+            if (filename.value ==""){
+                alert("Please Enter the filename !");  
+            }
+            }
+           
+            if (textarea.value && filename.value) {
+                const a=document.createElement("a");
+                document.body.append(a);
+                a.setAttribute('href',"data:text/plain;charset=utf-8," + encodeURIComponent(textarea.value))
+                a.download=`${filename.value}`;
+                a.click();
+                a.remove();
+                location.reload();
+                        
+            }
         }
     </script>
     
