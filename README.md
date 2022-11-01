@@ -4,4 +4,4 @@ This project is about creating a website ,where you can enter any text in the te
 - This website is build by using html5,css, javascript.
 
 # Live Site 
-https://b-chandru.github.io/textpad/
+https://b-chandru.github.io/Text-Pad/
